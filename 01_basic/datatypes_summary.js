@@ -21,7 +21,7 @@ let myobj={
 const myfun=function(name){
     console.log(name +" "+"singh");
 }
-myfun("nits")
+myfun("nits");
 
 console.log(typeof myfun);
 console.log(typeof arr);
