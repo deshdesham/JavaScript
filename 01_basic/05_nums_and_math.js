@@ -12,7 +12,7 @@ const value=10000000
 console.log(value.toLocaleString("en-IN")); 
 
 // ====================================================
-console.log(Math);
+console.log(Math)
 console.log(Math.abs(-4)); //4
 console.log(Math.round(4.2)); //4
 console.log(Math.ceil(4.2)); //5
