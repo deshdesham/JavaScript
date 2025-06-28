@@ -14,7 +14,7 @@ console.log(newdate1.toLocaleString()); //5/1/2024, 5:03:25 am
 const newdate2=new Date("2025","06","25")
 console.log(newdate2.toLocaleString()); //25/7/2025, 12:00:00 am
 
-let timstamp=Date.now()
+let timstamp=Date.now();
 console.log(timstamp);
 console.table(newdate2.getTime());
 console.log(Math.floor(Date.now()/1000)); //convert to second 1751094574
