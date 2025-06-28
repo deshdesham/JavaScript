@@ -218,7 +218,7 @@ console.log(stra.substring(10,15)); //brown
 console.log(stra.substring(10)); //brown fox jumps over the lazy dog.
 
 function replaceString(olds,newS,fulls){
-  return fulls.split(olds).join(newS);
+  return fulls.split(olds).join(newS)
 }
 const resl=replaceString("dog","cat","The dog barks. The dog runs.")
 console.log(resl);
