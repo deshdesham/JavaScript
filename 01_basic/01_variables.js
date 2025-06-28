@@ -5,7 +5,7 @@ accountCity="jaipur"
 let accountState;
 let accountName;
 // accountId=5 //not allowed
-console.log(accountId);
+console.log(accountId)
 accountEmail="desh@gmail.co"
 accountCity="patna"
 console.table([accountId,accountEmail,accountPassword,accountCity,accountName,accountState])
