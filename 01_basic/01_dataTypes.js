@@ -9,7 +9,7 @@
 undefined
 // Symbol=>unique
 // Object
-age=23
+age=24
 
 console.log(typeof "string");
 console.log(typeof age);
