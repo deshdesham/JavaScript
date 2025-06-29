@@ -216,4 +216,46 @@ console.log(length); //5
     console.log(userinfo.get(person5).age); //8
     console.log(userinfo.get(person5).gender); //male
 
-    
+    //////////clone using object.assign/////-----------
+
+    const obj={
+        key1:"value1",
+        key2:"value2"
+    }
+    // const obj1=obj
+    const obj1={...obj}
+    console.log(obj1); //{ key1: 'value1', key2: 'value2' }
+    console.log(Object.assign({},obj)); //{ key1: 'value1', key2: 'value2' }
+    obj.key3="value3"
+    console.log(obj); //{ key1: 'value1', key2: 'value2', key3: 'value3' }
+    console.log(obj1); //{ key1: 'value1', key2: 'value2' }
+
+    ///optional chaning///---------------------------
+    const user1={
+        firstname:"harsit",
+        address:{houseNo:"112233"}
+    }
+    console.log(user1.address); //{ houseNo: '112233' }
+    console.log(user1.address.houseNo); //112233
+    const user2={
+        firstname:"harsit",
+        // address:{houseNo:"112233"}
+    }
+    console.log(user2.address); //key type undefine
+    //console.log(user2.address.houseNo); //error
+    console.log(user2?.address); //undefine
+    console.log(user2?.firstname); //harsit
+
+    ///////create own method////---------------------
+    //function inside object
+
+    const person3={
+        firstname:"harsit",
+        age:20,
+        about:function(){
+            console.log(`person name is ${this.firstname} and age is ${this.age}`);
+            console.log(this); //{firstname: 'harsit', age: 20, about: ƒ}
+        }
+    }
+    console.log(person3.about);//[Function: about]
+    person3.about() //person name is harsit and age is 20
