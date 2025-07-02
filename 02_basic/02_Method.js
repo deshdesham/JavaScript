@@ -259,3 +259,137 @@ console.log(length); //5
     }
     console.log(person3.about);//[Function: about]
     person3.about() //person name is harsit and age is 20
+
+    ///this keyword/////------------------------
+
+    console.log(this);//Window {window: Window, self: Window, document: document, name: '', location: Location, …}
+    // console.log(window);
+    function myfucn() {
+      "use strict";
+      console.log(this); //undefined
+    }
+    myfucn();
+    // -==================== //call,applay,bind
+
+    function hello() {
+      console.log("hello world");
+    }
+    hello(); 
+    //This is the normal way to call a function.
+    // It runs the function as-is, using the default this context (usually window in browsers).
+    hello.call();
+    //This uses JavaScript’s .call() method, which allows you to explicitly set the this context when calling a function.
+    hello.call(undefined) //hello world
+    function showName() {
+        console.log(this.name);
+      }
+      
+      const users3 = { name: "Desh" };
+      showName.call(users3); // Output: "Desh"
+      
+      const usera={
+        name:"harsit",
+        age:25,
+        userId:"25489",
+        about:function(){
+            console.log(`UserA name is ${this.name} and age is ${this.age}`);
+        }
+      }
+      const userb={
+        name:"desh",
+        age:20,
+        userId:"32154"
+      }
+      usera.about()
+
+      const userc = {
+        name: "harsit",
+        age: 25,
+        userId: "25489",
+        about: function (device,language) {
+          console.log(
+            `UserA name is ${this.name} and age is ${this.age} ,like to learn ${language} on ${device}`
+          ); //UserA name is desh and age is 20 ,like to learn Javascript on laptop
+        },
+      };
+      const userd = {
+        name: "desh",
+        age: 20,
+        userId: "32154",
+        device: "laptop",
+        language: "Javascript",
+      };
+      userc.about.call(userd,userd.device,userd.language);
+      userc.about.call(userd,"laptop","Java"); //also like this code execute
+      userc.about("laptop","Java"); //also like this code execute
+
+      //////////////////applay///////////////--------------------------
+          function about(device,language){
+            
+            console.log(
+              `UserA name is ${this.name} and age is ${this.age} ,like to learn ${language} on ${device}`
+            ); //UserA name is desh and age is 20 ,like to learn Javascript on laptop
+          }
+
+          const usere= {
+            name: "desh",
+            age: 20,
+            userId: "32154",
+            device: "laptop",
+            language: "Javascript",
+          };
+          about.apply(usere,[usere.device,usere.language])
+
+          function introduce(name,age,city){
+            console.log(`UserA name is ${name} and age is ${age},${city}`); //UserA name is harsita and age is 25,delhi
+          }
+          const details=["harsita",25,'delhi']
+          introduce.apply(null,details)
+
+          const a=[5,6,9]
+          const b=[4,8,9,1]
+          Array.prototype.push.apply(a,b)
+          console.log(a); //[5, 6, 9, 6,8, 9, 1]
+          console.log(typeof a); //object
+          const add=(a,b,c)=>{
+            return console.log(`total value is: ${a+b+c}`)            
+          }
+          const value=[5,6,8]
+          console.log(add.apply(null, value)); //undefined ,apply has no effect on arrow function
+          console.log(add(...value)); //total value is: 19
+
+          //////////////////////////////bind----------------------///-------------------------------
+          function about(device, language) {
+            console.log("userf",
+              `UserA name is ${this.name} and age is ${this.age} ,like to learn ${language} on ${device}`
+            ); //UserA name is desh and age is 20 ,like to learn Javascript on laptop
+          }
+          const userf = {
+            name: "desh",
+            age: 20,
+            userId: "32154",
+            device: "laptop",
+            language: "Javascript",
+          };
+          about.bind(userf,userf.device,userf.language)()
+
+          ////////////////////////////////warning//////////--------------------------
+
+          const usersg = {
+            firstname: "desham",
+            age: 56,
+            about: function () {
+              console.log(this.firstname, this.age);
+            },
+          };
+          // usersg.about();
+          const myans = usersg.about; //////what happen show undefined undefind
+          const myans1 = function () {
+            console.log(this.firstname, this.age);
+          };
+          myans1();
+
+          const myfan = usersg.about.bind(users);
+          myfan();
+          myans1.bind(usersg)();
+
